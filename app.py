@@ -294,7 +294,7 @@ elif page == "🎯 Product Recommendations":
 # ═══════════════════════════════════════════════════════════════════
 # PAGE 3: CUSTOMER SEGMENTATION
 # ═══════════════════════════════════════════════════════════════════
-else:
+elif page == "👤 Customer Segmentation":
     st.markdown("## 👤 Customer Segmentation Predictor")
     st.markdown(
         "Enter a customer's **RFM values** to predict their segment using "
