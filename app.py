@@ -163,7 +163,7 @@ if page == "📊 Dashboard Overview":
         fig, ax = plt.subplots(figsize=(6, 5))
         colors = {"High-Value": "#C44E52", "Regular": "#4C72B0",
                   "Occasional": "#55A868", "At-Risk": "#8172B2"}
-        seg_counts_sorted = seg_counts.sort_values(ascending=False)
+        seg_counts_sorted = pd.Series(seg_counts).sort_values(ascending=False)
         bars = ax.bar(seg_counts_sorted.index, seg_counts_sorted.values,
                       color=[colors[s] for s in seg_counts_sorted.index],
                       edgecolor="white", linewidth=1.5)
