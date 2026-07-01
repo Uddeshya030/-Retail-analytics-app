@@ -136,7 +136,7 @@ if page == "📊 Dashboard Overview":
 
     # KPI cards
     c1, c2, c3, c4 = st.columns(4)
-    seg_counts = rfm["Segment"].value_counts()
+    seg_counts = rfm["Segment"].value_counts().to_dict()
     with c1:
         st.markdown(f"""<div class="metric-card red">
             <h3>🏆 {seg_counts.get('High-Value',0)}</h3>
