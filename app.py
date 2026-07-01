@@ -118,6 +118,7 @@ with st.sidebar:
         "📊 Dashboard Overview",
         "🎯 Product Recommendations",
         "👤 Customer Segmentation",
+        "📈 RFM Analysis",
     ], label_visibility="collapsed")
 
     st.markdown("---")
@@ -432,7 +433,28 @@ else:
         use_container_width=True,
     )
     st.caption(f"Showing {len(filtered):,} customers")
+    # ═══════════════════════════════════════════════════════════
+# PAGE 4: RFM ANALYSIS
+# ═══════════════════════════════════════════════════════════
+elif page == "📈 RFM Analysis":
+    st.markdown("## 📈 RFM Analysis")
+    st.markdown("*Recency, Frequency, Monetary Analysis by Segment*")
 
+    # RFM Summary by Segment
+    st.markdown("### 📊 RFM Summary by Segment")
+    seg_summary = rfm.groupby('Segment')[['Recency','Frequency','Monetary']].agg(['mean','min','max']).round(2)
+    st.dataframe(seg_summary, use_container_width=True)
+
+    # Segment wise counts
+    st.markdown("### 👥 Customer Count by Segment")
+    seg_counts = rfm['Segment'].value_counts().reset_index()
+    seg_counts.columns = ['Segment', 'Count']
+    st.dataframe(seg_counts, use_container_width=True)
+
+    # RFM Distribution plots
+    st.markdown("### 📉 RFM Distributions")
+    if os.path.exists(f"{BASE}/rfm_distributions.png"):
+        st.image(f"{BASE}/rfm_distributions.png", use_container_width=True)
 # ── Footer ────────────────────────────────────────────────────────
 st.markdown("---")
 st.markdown(
