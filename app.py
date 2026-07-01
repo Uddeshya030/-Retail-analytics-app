@@ -138,21 +138,13 @@ if page == "📊 Dashboard Overview":
     c1, c2, c3, c4 = st.columns(4)
     seg_counts = rfm["Segment"].value_counts().to_dict()
     with c1:
-        st.markdown(f"""<div class="metric-card red">
-            <h3>🏆 {seg_counts.get('High-Value',0)}</h3>
-            <p>High-Value Customers</p></div>""", unsafe_allow_html=True)
+        st.metric("🏆 High-Value", seg_counts.get('High-Value', 0))
     with c2:
-        st.markdown(f"""<div class="metric-card">
-            <h3>🔄 {seg_counts.get('Regular',0)}</h3>
-            <p>Regular Customers</p></div>""", unsafe_allow_html=True)
+        st.metric("🔄 Regular", seg_counts.get('Regular', 0))
     with c3:
-        st.markdown(f"""<div class="metric-card green">
-            <h3>🛒 {seg_counts.get('Occasional',0)}</h3>
-            <p>Occasional Customers</p></div>""", unsafe_allow_html=True)
+        st.metric("🛒 Occasional", seg_counts.get('Occasional', 0))
     with c4:
-        st.markdown(f"""<div class="metric-card purple">
-            <h3>⚠️ {seg_counts.get('At-Risk',0)}</h3>
-            <p>At-Risk Customers</p></div>""", unsafe_allow_html=True)
+        st.metric("⚠️ At-Risk", seg_counts.get('At-Risk', 0))
 
     st.markdown("---")
 
